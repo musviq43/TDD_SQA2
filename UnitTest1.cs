@@ -1,75 +1,57 @@
-using FibonacciSolution;
-
-namespace XUnitTest
+using Unique_Integers;
+namespace UniqueTests
 {
     public class UnitTest1
     {
+
         [Fact]
         public void Test1()
         {
-            var fib = new Fibonacci();
-            var result = fib.Fib(6);
+            var uniq = new UniqueInt();
+            var my_input = new List<int>() { 1, 2, 3, 2, 4, 3, 5 };
+            var result = uniq.GetUniqueElements(my_input);
+            Assert.Equal(new List<int>() { 1, 2, 3, 4, 5 }, result);
 
-            Assert.Equal(8, result);
-        }
-        [Fact]
-        public void TestFibonacciWithZero()
-        {
-            var fibonacci = new Fibonacci();
-            var result = fibonacci.Fib(0);
-            Assert.Equal(0, result);
-        }
-        [Fact]
-        public void FibonacciWithNegativeNumberShouldReturnSameNumber()
-        {
-          
-            var fibonacci = new Fibonacci();
-            var result = fibonacci.Fib(-5);
-            Assert.Equal(-5, result);
         }
 
         [Fact]
-        public void FibonacciWithLargeNumberShouldReturnCorrectResult()
+        public void Test2()
         {
-           
-            var fibonacci = new Fibonacci();
-            var result = fibonacci.Fib(10);
-            Assert.Equal(55, result);
+            var uniq = new UniqueInt();
+            var my_input = new List<int>() { };
+            var result = uniq.GetUniqueElements(my_input);
+            Assert.Equal(new List<int>() { }, result);
+
         }
 
         [Fact]
-        public void TestFibonacciWithOne()
+        public void Test3()
         {
-            var fibonacci = new Fibonacci();
-            var result = fibonacci.Fib(1);
-            Assert.Equal(1, result);
-            
+            var uniq = new UniqueInt();
+            var my_input = new List<int>() { 1, 2, 3, 4, 5 };
+            var result = uniq.GetUniqueElements(my_input);
+            Assert.Equal(new List<int>() { 1, 2, 3, 4, 5 }, result);
+
         }
 
         [Fact]
-        public void TestFibonacciWithSmallNumber()
+        public void Test4() // I make wrong assert intentionally
         {
-            var fibonacci = new Fibonacci();
-            var result = fibonacci.Fib(6);
-            Assert.Equal(8, result);
+            var uniq = new UniqueInt();
+            var my_input = new List<int>() { 1, 2, 3, 4 };
+            var result = uniq.GetUniqueElements(my_input);
+            Assert.Equal(new List<int>() { 1, 2, 3, 4, 5 }, result);
+
         }
 
         [Fact]
-        public void TestFibonacciWithNegativeNumber()
+        public void Test5()
         {
-            var fibonacci = new Fibonacci();
-            var result = fibonacci.Fib(-5);
-            Assert.Equal(-5, result);
-          
-        }
+            var uniq = new UniqueInt();
+            var my_input = new List<int>() { 1, 1, 1, 1 };
+            var result = uniq.GetUniqueElements(my_input);
+            Assert.Equal(new List<int>() { 1 }, result);
 
-        [Fact]
-        public void TestFibonacciWithLargeNumber()
-        {
-            
-            var fibonacci = new Fibonacci();
-            var result = fibonacci.Fib(10);
-            Assert.Equal(55, result);
         }
     }
 }
